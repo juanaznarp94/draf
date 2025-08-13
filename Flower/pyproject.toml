@@ -1,0 +1,46 @@
+
+    [build-system]
+    requires = ["hatchling"]
+    build-backend = "hatchling.build"
+
+    [project]
+    name = "federated_ex"
+    version = "1.0.0"
+    description = ""
+    license = "Apache-2.0"
+    dependencies = [
+    "flwr[simulation]>=1.18.0",
+    "flwr-datasets[vision]>=0.5.0",
+    "torch==2.5.1+cpu",
+    "torchvision==0.20.1+cpu",
+    "scipy",
+    "boto3"
+]
+
+
+    [tool.hatch.build.targets.wheel]
+    packages = ["."]
+
+    [tool.flwr.app]
+    publisher = "JuanAznar"
+
+    [tool.flwr.app.components]
+    serverapp = "federated_ex.server_app:app"
+    clientapp = "federated_ex.client_app:app"
+
+    [tool.flwr.app.config]
+    num-server-rounds = 7
+    fraction-fit = 1
+    local-epochs = 1
+    strategy_type = "custom"
+    min_available_clients = 4
+    aws_secret_key = "aws_secret_key"
+    aws_token = "aws_token"
+    aws_access_key = "aws_access_key"
+    aws_region = "us-east-1"
+    run_name = "juanRun"
+    
+    [tool.flwr.federations.local-deployment]
+    address = "127.0.0.1:9093"
+    insecure = true
+    
