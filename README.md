@@ -1,10 +1,6 @@
 # DRAF: A Drift-Resilient Averaging in Federated Learning
 
-## Setup
-
-# federated-ex: A Flower / PyTorch app
-
-## Execution on AWS via terraform
+## Execution on AWS via Terraform
 
 1. Create a .env file
 2. Copy from the content from the .env.example file into your .env file
@@ -33,7 +29,7 @@ to deploy the setup on AWS
 sh ./destroy.sh
 ```
 
-After that you can inspect the training reslults in AWS CloudWatch.
+After that, you can inspect the training results in AWS CloudWatch.
 Optional
 ---
 ### SSH into Device EC2s
@@ -69,10 +65,6 @@ docker ps -a
 ```bash
 docker logs -f <containerID>
 ```
-**NOTE!!**
-Some logs are declared as ERROR but these are nor Errors.
-We used logging.error because we had a bug with Flowers. When we used logging.info it didn't
-appear. 
 
 ## Resources
 
